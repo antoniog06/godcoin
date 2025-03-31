@@ -1,0 +1,2 @@
+# godcoin
+Official GODCOIN project
