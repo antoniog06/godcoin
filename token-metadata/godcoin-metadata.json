@@ -1,0 +1,17 @@
+{
+  "name": "GODCOIN",
+  "symbol": "GOD",
+  "description": "Official GODCOIN token on Solana.",
+  "image": "<REPLACE_WITH_UPLOADED_IMAGE_URI>",
+  "external_url": "",
+  "attributes": [],
+  "properties": {
+    "files": [
+      {
+        "uri": "<REPLACE_WITH_UPLOADED_IMAGE_URI>",
+        "type": "image/png"
+      }
+    ],
+    "category": "currency"
+  }
+}
