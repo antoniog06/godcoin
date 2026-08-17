@@ -1,0 +1,16 @@
+{
+  "name": "godcoin-token-metadata",
+  "version": "1.0.0",
+  "description": "Scripts to update GODCOIN (GOD) token metadata on Solana",
+  "scripts": {
+    "upload-logo": "node scripts/upload-logo.js",
+    "update-metadata": "node scripts/update-metadata.js"
+  },
+  "dependencies": {
+    "@metaplex-foundation/mpl-token-metadata": "^3.4.0",
+    "@metaplex-foundation/umi": "^1.5.1",
+    "@metaplex-foundation/umi-bundle-defaults": "^1.5.1",
+    "@metaplex-foundation/umi-uploader-irys": "^1.5.0",
+    "@solana/web3.js": "^1.95.0"
+  }
+}

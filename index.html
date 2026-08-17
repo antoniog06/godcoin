@@ -1,0 +1,671 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GODcoin — The Only Cryptocurrency That Gives Back</title>
+    <meta name="description" content="GODcoin (GOD) is a community-backed cryptocurrency tied to real-world housing. Buy GOD, pay rent, get discounts, build communities.">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --gold: #D4AF37;
+            --gold-light: #F5E6A3;
+            --dark: #0a0a0a;
+            --darker: #050505;
+            --text: #e0e0e0;
+            --text-dim: #888;
+            --accent: #D4AF37;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: var(--darker);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(5, 5, 5, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.2);
+            padding: 1rem 2rem;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: var(--gold);
+            letter-spacing: 2px;
+        }
+
+        .logo span { color: var(--text); }
+
+        .nav-links { display: flex; gap: 2rem; list-style: none; }
+        .nav-links a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: color 0.3s;
+        }
+        .nav-links a:hover { color: var(--gold); }
+
+        /* Hero */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 6rem 2rem 4rem;
+            background: radial-gradient(ellipse at center top, rgba(212, 175, 55, 0.08) 0%, transparent 60%);
+        }
+
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+            line-height: 1.1;
+        }
+
+        .hero h1 .gold { color: var(--gold); }
+
+        .hero .tagline {
+            font-size: clamp(1.1rem, 2.5vw, 1.5rem);
+            color: var(--text-dim);
+            max-width: 700px;
+            margin-bottom: 2rem;
+        }
+
+        .hero .mint {
+            font-family: monospace;
+            font-size: 0.8rem;
+            color: var(--text-dim);
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            padding: 0.5rem 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 3rem;
+            word-break: break-all;
+        }
+
+        .cta-group { display: flex; gap: 1rem; flex-wrap: wrap; justify-content: center; }
+
+        .btn {
+            display: inline-block;
+            padding: 0.9rem 2.5rem;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 700;
+            text-decoration: none;
+            transition: all 0.3s;
+            cursor: pointer;
+            border: none;
+        }
+
+        .btn-primary {
+            background: var(--gold);
+            color: var(--darker);
+        }
+        .btn-primary:hover { background: var(--gold-light); transform: translateY(-2px); }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--gold);
+            border: 2px solid var(--gold);
+        }
+        .btn-secondary:hover { background: rgba(212, 175, 55, 0.1); transform: translateY(-2px); }
+
+        /* Sections */
+        section {
+            padding: 5rem 2rem;
+            max-width: 1100px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            color: var(--gold);
+        }
+
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-dim);
+            margin-bottom: 3rem;
+            max-width: 700px;
+        }
+
+        /* The Problem / Solution */
+        .problem-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+        }
+
+        .problem-card {
+            background: rgba(255, 0, 0, 0.05);
+            border: 1px solid rgba(255, 0, 0, 0.15);
+            border-radius: 12px;
+            padding: 1.5rem;
+        }
+
+        .problem-card h3 {
+            color: #ff4444;
+            margin-bottom: 0.5rem;
+        }
+
+        .problem-card p { color: var(--text-dim); font-size: 0.95rem; }
+
+        .solution-card {
+            background: rgba(212, 175, 55, 0.05);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .solution-card h3 {
+            color: var(--gold);
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+        }
+
+        /* The Cycle */
+        .cycle {
+            background: rgba(212, 175, 55, 0.03);
+            border: 1px solid rgba(212, 175, 55, 0.15);
+            border-radius: 16px;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin: 2rem 0;
+        }
+
+        .cycle-steps {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 0;
+            margin-top: 2rem;
+        }
+
+        .cycle-step {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .step-box {
+            background: rgba(212, 175, 55, 0.1);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 8px;
+            padding: 1rem 1.2rem;
+            font-size: 0.9rem;
+            white-space: nowrap;
+        }
+
+        .step-arrow {
+            color: var(--gold);
+            font-size: 1.5rem;
+            padding: 0 0.3rem;
+        }
+
+        /* Tiers */
+        .tier-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .tier-card {
+            background: var(--dark);
+            border: 1px solid rgba(212, 175, 55, 0.2);
+            border-radius: 12px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .tier-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold);
+        }
+
+        .tier-name {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        .tier-bronze .tier-name { color: #CD7F32; }
+        .tier-silver .tier-name { color: #C0C0C0; }
+        .tier-gold .tier-name { color: #FFD700; }
+        .tier-platinum .tier-name { color: #E5E4E2; }
+
+        .tier-amount {
+            font-size: 2rem;
+            font-weight: 900;
+            color: var(--gold);
+            margin: 0.5rem 0;
+        }
+
+        .tier-discount {
+            font-size: 1.1rem;
+            color: var(--text);
+            margin-bottom: 1rem;
+        }
+
+        .tier-details { font-size: 0.85rem; color: var(--text-dim); }
+
+        /* Comparison */
+        .comparison-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 2rem;
+        }
+
+        .comparison-table th,
+        .comparison-table td {
+            padding: 1rem;
+            text-align: center;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .comparison-table th {
+            color: var(--text-dim);
+            font-weight: 600;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+
+        .comparison-table th:last-child {
+            color: var(--gold);
+        }
+
+        .comparison-table td { font-size: 0.95rem; }
+        .comparison-table td:last-child { color: var(--gold); font-weight: 700; }
+
+        .check { color: #4CAF50; }
+        .cross { color: #ff4444; }
+
+        /* Roadmap */
+        .roadmap {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .roadmap::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--gold), rgba(212, 175, 55, 0.1));
+        }
+
+        .roadmap-phase {
+            position: relative;
+            margin-bottom: 2.5rem;
+            padding-left: 1.5rem;
+        }
+
+        .roadmap-phase::before {
+            content: '';
+            position: absolute;
+            left: -2rem;
+            top: 0.5rem;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--gold);
+            border: 2px solid var(--darker);
+        }
+
+        .roadmap-phase.active::before {
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.6);
+        }
+
+        .roadmap-phase h3 {
+            font-size: 1.1rem;
+            color: var(--gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .roadmap-phase ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .roadmap-phase li {
+            padding: 0.3rem 0;
+            color: var(--text-dim);
+            font-size: 0.9rem;
+        }
+
+        .roadmap-phase li.done { color: var(--text); text-decoration: line-through; opacity: 0.6; }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 1px solid rgba(212, 175, 55, 0.1);
+            color: var(--text-dim);
+            font-size: 0.85rem;
+        }
+
+        footer .logo { margin-bottom: 1rem; display: inline-block; }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links { display: none; }
+            .cycle-steps { flex-direction: column; align-items: center; }
+            .step-arrow { transform: rotate(90deg); }
+            section { padding: 3rem 1.5rem; }
+            .comparison-table { font-size: 0.8rem; }
+            .comparison-table th, .comparison-table td { padding: 0.6rem 0.3rem; }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation -->
+<nav>
+    <div class="logo">GOD<span>COIN</span></div>
+    <ul class="nav-links">
+        <li><a href="#about">About</a></li>
+        <li><a href="#how-it-works">How It Works</a></li>
+        <li><a href="#tiers">Tiers</a></li>
+        <li><a href="#compare">Compare</a></li>
+        <li><a href="#roadmap">Roadmap</a></li>
+        <li><a href="WHITEPAPER.md">Whitepaper</a></li>
+    </ul>
+</nav>
+
+<!-- Hero -->
+<section class="hero">
+    <h1>The Only Crypto<br>That <span class="gold">Gives Back</span></h1>
+    <p class="tagline">
+        GODcoin is a community-backed cryptocurrency tied to real housing.
+        Buy GOD. Pay rent. Get discounts. Build communities.
+    </p>
+    <div class="mint">
+        Solana Mint: HDaxFGHaJJi6mCMBVeZj8mwfiFpwE8snv6uEfuYabCcm
+    </div>
+    <div class="cta-group">
+        <a href="https://raydium.io/swap" class="btn btn-primary" target="_blank">Buy GOD on Raydium</a>
+        <a href="#how-it-works" class="btn btn-secondary">Learn How It Works</a>
+    </div>
+</section>
+
+<!-- The Problem -->
+<section id="about">
+    <h2 class="section-title">The Problem With Crypto Today</h2>
+    <p class="section-subtitle">
+        Every major cryptocurrency takes from people and gives nothing back.
+    </p>
+    <div class="problem-grid">
+        <div class="problem-card">
+            <h3>Bitcoin</h3>
+            <p>Digital gold — but you can't live in gold. Pure speculation with zero real-world utility for everyday people.</p>
+        </div>
+        <div class="problem-card">
+            <h3>Ethereum</h3>
+            <p>Smart contracts that cost a fortune in gas fees. The technology benefits developers, not regular people.</p>
+        </div>
+        <div class="problem-card">
+            <h3>Dogecoin / Shiba Inu</h3>
+            <p>Meme coins built on hype and hope. When the music stops, people lose everything.</p>
+        </div>
+    </div>
+    <div class="solution-card">
+        <h3>GODcoin Is Different By Design</h3>
+        <p>GOD is backed by <strong>real-world housing</strong>. Every token contributes to building communities where holders live, work, and thrive.
+        It's not speculation — it's a community contract. The more people join, the more buildings we build, the more value everyone gets.</p>
+    </div>
+</section>
+
+<!-- How It Works -->
+<section id="how-it-works">
+    <h2 class="section-title">How GODcoin Works</h2>
+    <p class="section-subtitle">
+        A self-sustaining cycle: tenants buy GOD, pay rent, company builds more housing, community grows.
+    </p>
+    <div class="cycle">
+        <h3 style="color: var(--gold); font-size: 1.3rem; margin-bottom: 0.5rem;">THE GOD CYCLE</h3>
+        <p style="color: var(--text-dim); margin-bottom: 1.5rem;">More users = More buildings = More value = Stronger GOD</p>
+        <div class="cycle-steps">
+            <div class="cycle-step">
+                <div class="step-box">Buy GOD</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="cycle-step">
+                <div class="step-box">Pay Rent</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="cycle-step">
+                <div class="step-box">Company Holds/Converts</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="cycle-step">
+                <div class="step-box">Build More Housing</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="cycle-step">
+                <div class="step-box">Community Grows</div>
+                <span class="step-arrow">&rarr;</span>
+            </div>
+            <div class="cycle-step">
+                <div class="step-box">Holders Get Discounts</div>
+            </div>
+        </div>
+    </div>
+
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.5rem; margin-top: 2rem;">
+        <div style="padding: 1.5rem;">
+            <h3 style="color: var(--gold); margin-bottom: 0.5rem;">Real Demand</h3>
+            <p style="color: var(--text-dim); font-size: 0.95rem;">Housing is not optional. Rent creates consistent, real buying pressure on GOD — not hype, not tweets, not memes.</p>
+        </div>
+        <div style="padding: 1.5rem;">
+            <h3 style="color: var(--gold); margin-bottom: 0.5rem;">Real Assets</h3>
+            <p style="color: var(--text-dim); font-size: 0.95rem;">Every GOD token is backed by physical buildings. Not promises. Not whitepapers. Actual real estate you can see and live in.</p>
+        </div>
+        <div style="padding: 1.5rem;">
+            <h3 style="color: var(--gold); margin-bottom: 0.5rem;">Real Utility</h3>
+            <p style="color: var(--text-dim); font-size: 0.95rem;">GOD pays your rent and earns you discounts. It does something. It gives back. No other crypto can say that.</p>
+        </div>
+    </div>
+</section>
+
+<!-- Community Tiers -->
+<section id="tiers">
+    <h2 class="section-title">Community Membership Tiers</h2>
+    <p class="section-subtitle">
+        Hold GOD. Get discounts. The more you hold, the more you save. This is a community — not a casino.
+    </p>
+    <div class="tier-grid">
+        <div class="tier-card tier-bronze">
+            <div class="tier-name">Bronze</div>
+            <div class="tier-amount">1,000+</div>
+            <div>GOD</div>
+            <div class="tier-discount">5% Rent Discount</div>
+            <div class="tier-details">Community access<br>Basic membership</div>
+        </div>
+        <div class="tier-card tier-silver">
+            <div class="tier-name">Silver</div>
+            <div class="tier-amount">10,000+</div>
+            <div>GOD</div>
+            <div class="tier-discount">10% Rent Discount</div>
+            <div class="tier-details">Priority housing<br>Community voting</div>
+        </div>
+        <div class="tier-card tier-gold">
+            <div class="tier-name">Gold</div>
+            <div class="tier-amount">50,000+</div>
+            <div>GOD</div>
+            <div class="tier-discount">15% Rent Discount</div>
+            <div class="tier-details">Priority housing<br>Governance participation</div>
+        </div>
+        <div class="tier-card tier-platinum">
+            <div class="tier-name">Platinum</div>
+            <div class="tier-amount">100,000+</div>
+            <div>GOD</div>
+            <div class="tier-discount">20% Rent Discount</div>
+            <div class="tier-details">Priority on new builds<br>Full governance rights</div>
+        </div>
+    </div>
+</section>
+
+<!-- Comparison -->
+<section id="compare">
+    <h2 class="section-title">GOD vs. Everything Else</h2>
+    <p class="section-subtitle">
+        Other tokens take your money and give you nothing. GOD gives back.
+    </p>
+    <table class="comparison-table">
+        <thead>
+            <tr>
+                <th>Feature</th>
+                <th>Bitcoin</th>
+                <th>Ethereum</th>
+                <th>Doge/Shiba</th>
+                <th>GODcoin</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>Real-world backing</td>
+                <td class="cross">None</td>
+                <td class="cross">None</td>
+                <td class="cross">None</td>
+                <td class="check">Housing & Real Estate</td>
+            </tr>
+            <tr>
+                <td>Gives back to holders</td>
+                <td class="cross">No</td>
+                <td class="cross">No</td>
+                <td class="cross">No</td>
+                <td class="check">Discounts + Housing</td>
+            </tr>
+            <tr>
+                <td>Real utility</td>
+                <td>Store of value</td>
+                <td>Smart contracts</td>
+                <td class="cross">Meme</td>
+                <td class="check">Rent & Community</td>
+            </tr>
+            <tr>
+                <td>Community ownership</td>
+                <td class="cross">No</td>
+                <td class="cross">No</td>
+                <td class="cross">No</td>
+                <td class="check">Yes</td>
+            </tr>
+            <tr>
+                <td>Self-sustaining model</td>
+                <td class="cross">No</td>
+                <td class="cross">No</td>
+                <td class="cross">No</td>
+                <td class="check">Yes</td>
+            </tr>
+            <tr>
+                <td>Backed by physical assets</td>
+                <td class="cross">No</td>
+                <td class="cross">No</td>
+                <td class="cross">No</td>
+                <td class="check">Yes</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<!-- Roadmap -->
+<section id="roadmap">
+    <h2 class="section-title">Roadmap</h2>
+    <p class="section-subtitle">
+        Building something real takes time. Here's where we're going.
+    </p>
+    <div class="roadmap">
+        <div class="roadmap-phase active">
+            <h3>Phase 1 — Foundation (Now)</h3>
+            <ul>
+                <li class="done">GOD token launched on Solana</li>
+                <li class="done">Token branding &amp; metadata established</li>
+                <li>Community contract framework</li>
+                <li>Smart contracts for rent payments</li>
+                <li>First community members onboarded</li>
+            </ul>
+        </div>
+        <div class="roadmap-phase">
+            <h3>Phase 2 — First Community</h3>
+            <ul>
+                <li>First property acquired</li>
+                <li>Rent payment system live</li>
+                <li>Holder discount tiers activated</li>
+                <li>Community governance established</li>
+                <li>100+ GOD holders</li>
+            </ul>
+        </div>
+        <div class="roadmap-phase">
+            <h3>Phase 3 — Growth</h3>
+            <ul>
+                <li>Multiple properties in portfolio</li>
+                <li>1,000+ community members</li>
+                <li>Mobile app for rent &amp; community</li>
+                <li>GOD accepted at community businesses</li>
+            </ul>
+        </div>
+        <div class="roadmap-phase">
+            <h3>Phase 4 — Ecosystem</h3>
+            <ul>
+                <li>Self-sustaining community economy</li>
+                <li>Community-owned properties</li>
+                <li>Expansion to multiple cities</li>
+                <li>10,000+ community members</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<!-- CTA -->
+<section style="text-align: center; padding: 4rem 2rem;">
+    <h2 style="font-size: 2rem; font-weight: 800; margin-bottom: 1rem;">
+        Join the Only Crypto That <span style="color: var(--gold);">Gives Back</span>
+    </h2>
+    <p style="color: var(--text-dim); margin-bottom: 2rem; max-width: 500px; margin-left: auto; margin-right: auto;">
+        This isn't speculation. This is a community. Buy GOD and become part of something real.
+    </p>
+    <div class="cta-group">
+        <a href="https://raydium.io/swap" class="btn btn-primary" target="_blank">Buy GOD Now</a>
+        <a href="WHITEPAPER.md" class="btn btn-secondary">Read the Whitepaper</a>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <div class="logo">GOD<span>COIN</span></div>
+    <p style="margin-top: 1rem;">The only cryptocurrency that gives back.</p>
+    <p style="margin-top: 0.5rem;">Solana Mint: HDaxFGHaJJi6mCMBVeZj8mwfiFpwE8snv6uEfuYabCcm</p>
+    <p style="margin-top: 1rem;">
+        <a href="COMMUNITY_CONTRACT.md" style="color: var(--gold); text-decoration: none;">Community Contract</a> &nbsp;|&nbsp;
+        <a href="privacy-policy.html" style="color: var(--gold); text-decoration: none;">Privacy Policy</a> &nbsp;|&nbsp;
+        <a href="mailto:support@godcoin.app" style="color: var(--gold); text-decoration: none;">Contact</a>
+    </p>
+    <p style="margin-top: 2rem; font-size: 0.75rem; color: #555;">
+        &copy; 2025 GODcoin. Building communities, not just wallets.
+    </p>
+</footer>
+
+</body>
+</html>

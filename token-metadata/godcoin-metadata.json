@@ -1,0 +1,17 @@
+{
+  "name": "GODCOIN",
+  "symbol": "GOD",
+  "description": "Official GODCOIN token on Solana.",
+  "image": "https://magenta-worldwide-marten-235.mypinata.cloud/ipfs/bafkreiaqirl7sxyrwmt6cahqz6n66tmhncnrlzp5fpjnhctkgsil6hit6q",
+  "external_url": "",
+  "attributes": [],
+  "properties": {
+    "files": [
+      {
+        "uri": "https://magenta-worldwide-marten-235.mypinata.cloud/ipfs/bafkreiaqirl7sxyrwmt6cahqz6n66tmhncnrlzp5fpjnhctkgsil6hit6q",
+        "type": "image/png"
+      }
+    ],
+    "category": "currency"
+  }
+}
